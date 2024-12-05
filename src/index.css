@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.spirax-regular {
+  font-family: "Spirax", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.inter-tight-400 {
+  font-family: "Inter Tight", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+@keyframes fadeInPopup {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.popup-animation {
+  animation: fadeInPopup 0.5s ease-out;
+}
