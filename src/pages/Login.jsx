@@ -3,13 +3,14 @@ import { UserData } from "../context/UserContext";
 import { LoadingSpinner } from "../components/Loading";
 import toast from "react-hot-toast";
 import PostOfficeList from "../components/PostOfficeList";
+import Verify from "./Verify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [postalID, setPostalID] = useState("");
   const [password, setPassword] = useState("");
   const [showPostOfficeList, setShowPostOfficeList] = useState(false); // State to show PostOfficeList
-  const { btnLoading } = UserData();
+  const { btnLoading, showOTPWindow, setShowOTPWindow } = UserData();
 
   const showDetails = (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ const Login = () => {
   };
 
   const closePostOfficeList = () => setShowPostOfficeList(false); // Close PostOfficeList
+  const closeOTPWindow = () => setShowOTPWindow(false);
 
   return (
     <>
@@ -46,7 +48,7 @@ const Login = () => {
             />
           </div>
           <div className="w-full h-full p-8 rounded-xl bg-tertiary">
-            <h1 className="spirax-regular text-2xl text-center text-black mb-2 sm:text-3xl md:text-4xl font-bold">
+            <h1 className="playfair-display-500 text-xl text-center text-black mb-2 sm:text-3xl md:text-4xl font-bold">
               LogIn/SignUp
             </h1>
             <div className="w-full mb-4">
@@ -112,7 +114,11 @@ const Login = () => {
 
       {/* Modal for PostOfficeList */}
       {showPostOfficeList && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div
+          className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 ${
+            showOTPWindow ? "blur-sm" : ""
+          }`}
+        >
           <div className="relative bg-transparent rounded-lg shadow-lg p-4 max-w-4xl w-full popup-animation">
             <PostOfficeList
               postalID={postalID}
@@ -120,6 +126,15 @@ const Login = () => {
               password={password}
               closePostOfficeList={closePostOfficeList}
             />
+          </div>
+        </div>
+      )}
+      {showOTPWindow && (
+        <div
+          className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50`}
+        >
+          <div className="relative bg-transparent rounded-lg shadow-lg p-4 max-w-4xl w-full popup-animation">
+            <Verify closeOTPWindow={closeOTPWindow} />
           </div>
         </div>
       )}

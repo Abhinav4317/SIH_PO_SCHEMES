@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { LoadingSpinner } from "../components/Loading";
 import { UserData } from "../context/UserContext";
 
-const Verify = () => {
+const Verify = ({ closeOTPWindow }) => {
   const [otp, setOtp] = useState("");
 
   const { verifyUser, btnLoading } = UserData();
@@ -17,14 +17,16 @@ const Verify = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <form
-        className="bg-white p-6 rounded shadow-md w-full
-     md:w-[500px]"
+        className="bg-primary p-6 rounded-lg shadow-md w-full
+     md:w-[500px]  border-4 border-secondary"
         onSubmit={submitHandler}
       >
-        <h2 className="text-2xl mb-4">Verify</h2>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="otp">
-            Otp:
+          <label
+            className="text-lg block text-black mb-2 font-serif"
+            htmlFor="otp"
+          >
+            One Time Password(OTP) has been sent to your mail:
           </label>
           <input
             type="number"
@@ -36,9 +38,22 @@ const Verify = () => {
           />
         </div>
 
-        <button className="bg-blue-500 text-white  py-2 px-4 rounded hover:bg-blue-700">
-          {btnLoading ? <LoadingSpinner /> : "Submit"}
-        </button>
+        <div className="flex gap-2 w-full items-center justify-center">
+          <button
+            onClick={submitHandler}
+            className="w-[20%] text-center font-bold py-1 bg-secondary rounded-lg text-black"
+            disabled={btnLoading}
+          >
+            {btnLoading ? <LoadingSpinner /> : "Submit"}
+          </button>
+          <button
+            onClick={closeOTPWindow}
+            className="w-[20%] text-center font-bold py-1 bg-black rounded-lg text-white"
+            disabled={btnLoading}
+          >
+            {"Back"}
+          </button>
+        </div>
       </form>
     </div>
   );

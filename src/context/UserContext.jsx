@@ -7,7 +7,8 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [btnLoading, setBtnLoading] = useState(false);
-  async function loginUser(email, postalID, password, navigate) {
+  const [showOTPWindow, setShowOTPWindow] = useState(false);
+  async function loginUser(email, postalID, password) {
     setBtnLoading(true);
     try {
       const p = password ? password : "";
@@ -20,7 +21,7 @@ export const UserProvider = ({ children }) => {
       toast.success(data.message);
       localStorage.setItem("verifyToken", data.verifyToken);
       console.log("verify token stored in local storage");
-      navigate("/verify");
+      setShowOTPWindow(true);
       setBtnLoading(false);
     } catch (error) {
       console.log(error);
@@ -47,6 +48,7 @@ export const UserProvider = ({ children }) => {
       localStorage.clear();
       localStorage.setItem("token", data.token);
       navigate("/");
+      setShowOTPWindow(false);
       setBtnLoading(false);
       setIsAuth(true);
       setUser(data.user);
@@ -98,6 +100,7 @@ export const UserProvider = ({ children }) => {
         verifyUser,
         loading,
         logoutHandler,
+        showOTPWindow,
       }}
     >
       {children}

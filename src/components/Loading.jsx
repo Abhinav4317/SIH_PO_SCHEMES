@@ -3,7 +3,11 @@ export const LoadingSpinner = () => {
     <div className="inline-block w-5 h-5 border-2 border-t-2 border-r-transparent border-white rounded-full animate-spin"></div>
   );
 };
-
+export const LoadingSpinnerDark = () => {
+  return (
+    <div className="inline-block w-5 h-5 border-2 border-t-2 border-r-transparent border-black rounded-full animate-spin"></div>
+  );
+};
 export const LoadingBig = () => {
   return (
     <div className="flex space-x-2 justify-center items-center w=[200px] m-auto mt-[300px]">

@@ -70,9 +70,9 @@ const PincodeMap = ({ pincode }) => {
   }, [map, postOffices]);
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center mt-28">
       {postOffices.length > 0 ? (
-        <div id="map" style={{ height: "50vh", width: "100%" }} />
+        <div id="map" style={{ height: "70vh", width: "100%", zIndex: 0 }} />
       ) : (
         <p>Loading map...</p>
       )}

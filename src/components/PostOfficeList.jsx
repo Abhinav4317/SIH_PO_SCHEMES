@@ -1,9 +1,8 @@
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import { UserData } from "../context/UserContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { LoadingSpinner } from "./Loading";
+import { LoadingSpinner, LoadingSpinnerDark } from "./Loading";
 
 const PostOfficeList = ({
   postalID = "243122",
@@ -12,7 +11,6 @@ const PostOfficeList = ({
   closePostOfficeList,
 }) => {
   const { loginUser, btnLoading } = UserData();
-  const navigate = useNavigate();
   const [POList, setPOList] = useState([]);
   const [openIndex, setOpenIndex] = useState(null); // Track which dropdown is open
   useEffect(() => {
@@ -42,7 +40,7 @@ const PostOfficeList = ({
       return;
     }
 
-    loginUser(email, postalID, password, navigate);
+    loginUser(email, postalID, password);
   };
 
   return (
@@ -69,6 +67,11 @@ const PostOfficeList = ({
             </h1>
           </div>
           <div className="w-full h-full overflow-y-auto">
+            {POList?.length === 0 && (
+              <div className="h-full w-full flex items-center justify-center">
+                <LoadingSpinnerDark />
+              </div>
+            )}
             {POList?.length > 0 &&
               POList.map((postOffice, index) => (
                 <div

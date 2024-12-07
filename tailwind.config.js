@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
+import flowbitePlugin from "flowbite/plugin";
 function addVariablesForColors({ addBase, theme }) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
@@ -11,7 +12,11 @@ function addVariablesForColors({ addBase, theme }) {
   });
 }
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js",
+  ],
   theme: {
     extend: {
       colors: {
@@ -21,5 +26,5 @@ export default {
       },
     },
   },
-  plugins: [addVariablesForColors],
+  plugins: [addVariablesForColors, flowbitePlugin],
 };
