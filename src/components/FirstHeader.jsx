@@ -8,19 +8,27 @@ const FirstHeader = ({ headerRef }) => {
       ref={headerRef}
       className="flex justify-between items-center p-2 bg-white"
     >
-      <div className="w-full flex flex-wrap items-center justify-center md:gap-10 lg:gap-80 p-4">
+      <div className="w-full flex items-center justify-center md:gap-10 lg:gap-80 p-4">
         <div className="flex items-center gap-2">
           <Link
             to="/"
             className="flex items-center w-36 lg:w-64 space-x-3 rtl:space-x-reverse"
           >
-            <img src="/logo_white_3.png" alt="" className="w-full" />
+            <img
+              src="https://res.cloudinary.com/agmern/image/upload/v1733666951/ourilab8jsoml5pau64c.png"
+              alt=""
+              className="w-full"
+            />
           </Link>
           <Link
             to={"/"}
             className="flex items-center w-0 h-0 lg:w-48 lg:h-16 border-l border-gray-200 space-x-3 rtl:space-x-reverse"
           >
-            <img src="/ip_logo.jpg" alt="" className="w-full h-full" />
+            <img
+              src="https://res.cloudinary.com/agmern/image/upload/v1733666900/x4o0jdxfbgsrctteihlm.jpg"
+              alt=""
+              className="w-full h-full"
+            />
           </Link>
         </div>
         <div className="flex items-center gap-2">

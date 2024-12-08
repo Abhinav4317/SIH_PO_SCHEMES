@@ -30,7 +30,11 @@ const Landing = () => {
     <div className="w-full min-h-screen">
       <FirstHeader headerRef={headerRef} />
       <div ref={imageRef} className="w-full max-h-screen">
-        <img src="/landing_img_2.png" alt="" className="w-full h-full" />
+        <img
+          src="https://res.cloudinary.com/agmern/image/upload/v1733667035/ghbyubfqmjiibk6ezuew.png"
+          alt=""
+          className="w-full h-full"
+        />
       </div>
     </div>
   );

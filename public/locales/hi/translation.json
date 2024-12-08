@@ -4,8 +4,12 @@
   "Feedback": "प्रतिपुष्टि",
   "Suggestion": "सुझाव",
   "Suggestion Form": "सुझाव प्रपत्र",
+  "SuggestionSub": "(देखें कि आपके क्षेत्र के नागरिक क्या सुझाव देते हैं बढ़ावा देने के लिए)",
+  "Demo": "क्षेत्रीय जनसांख्यिकी",
+  "DemoSub": "(नीचे प्रत्येक टैब पर क्लिक करें ताकि विभिन्न मानकों पर चित्रमय दृश्य देख सकें)",
   "Help Center": "सहायता केंद्र",
   "LogIn": "लॉग इन",
+  "LogOut": "लॉग आउट",
   "Pincode": "PIN कोड दर्ज करें",
   "Post Office Savings Account": "पोस्ट ऑफिस सेविंग्स अकाउंट",
   "5-Year Post Office Recurring Deposit Account (RD)": "5-वर्षीय पोस्ट ऑफिस आवर्ती जमा खाता (RD)",
@@ -110,5 +114,11 @@
     "TR2S9": "PPF से अधिक ब्याज दर",
     "TR3S9": "21 वर्षों के बाद परिपक्वता",
     "TR4S9": "18 वर्षों के बाद आंशिक निकासी"
-  }
+  },
+  "population_age_gender": "आयु और लिंग के अनुसार जनसंख्या",
+  "income_level_distribution": "आय स्तर का वितरण",
+  "occupation_distribution": "व्यवसाय वितरण",
+  "population_trend_age": "आयु के अनुसार जनसंख्या प्रवृत्ति",
+  "population_occupation_gender_split": "लिंग विभाजन के अनुसार व्यवसाय में जनसंख्या",
+  "heatmap_population_age_income_occupation": "हीटमैप: आयु, आय और व्यवसाय के अनुसार जनसंख्या"
 }

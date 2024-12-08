@@ -7,6 +7,7 @@ import Account from "./pages/Account";
 import Landing from "./pages/Landing";
 import Feedback from "./pages/Feedback";
 import Schemes from "./pages/Schemes";
+import HelpCenter from "./pages/HelpCenter";
 const App = () => {
   const { isAuth, loading } = UserData();
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/account" element={isAuth ? <Account /> : <Login />} />
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/schemes" element={<Schemes />} />
+            <Route path="/help" element={<HelpCenter />} />
           </Routes>
         </BrowserRouter>
       )}

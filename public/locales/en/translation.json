@@ -4,8 +4,12 @@
   "Feedback": "Feedback",
   "Suggestion": "Suggestion",
   "Suggestion Form": "Suggestion Form",
+  "SuggestionSub": "(Click to view what the civilians in your region suggest to promote)",
+  "Demo": "Region Demographic",
+  "DemoSub": "(Click each tab below to view pictorial visualisation on different parameters)",
   "Help Center": "Help Center",
   "LogIn": "Sign-In",
+  "LogOut": "LogOut",
   "Schemes Info": "Schemes Details",
   "Pincode": "Enter PIN Code",
   "Post Office Savings Account": "Post Office Savings Account",
@@ -110,5 +114,11 @@
     "TR2S9": "Higher interest than PPF",
     "TR3S9": "Maturity after 21 years",
     "TR4S9": "Partial withdrawals after 18 years"
-  }
+  },
+  "population_age_gender": "Population by Age and Gender",
+  "income_level_distribution": "Income Level Distribution",
+  "occupation_distribution": "Occupation Distribution",
+  "population_trend_age": "Population Trend by Age",
+  "population_occupation_gender_split": "Population by Occupation (Gender Split)",
+  "heatmap_population_age_income_occupation": "Heatmap: Population by Age, Income, and Occupation"
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { UserData } from "../context/UserContext";
 import { Link, useLocation } from "react-router-dom";
+import LanguageSelector from "./LanguageSelector";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,20 +20,28 @@ const Header = () => {
               to="/"
               className="flex items-center w-36 lg:w-64 space-x-3 rtl:space-x-reverse"
             >
-              <img src="/logo_white_3.png" alt="" className="w-full" />
+              <img
+                src="https://res.cloudinary.com/agmern/image/upload/v1733666951/ourilab8jsoml5pau64c.png"
+                alt="Logo"
+                className="w-full"
+              />
             </Link>
             <Link
               to={"/"}
               className="flex items-center w-0 h-0 lg:w-48 lg:h-24 border-l border-gray-200 space-x-3 rtl:space-x-reverse"
             >
-              <img src="/ip_logo.jpg" alt="" className="w-full h-full" />
+              <img
+                src="https://res.cloudinary.com/agmern/image/upload/v1733666900/x4o0jdxfbgsrctteihlm.jpg"
+                alt="Secondary Logo"
+                className="w-full h-full"
+              />
             </Link>
           </div>
 
           {/* Buttons and Hamburger Menu */}
           <div className="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
             {isAuth ? (
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center justify-center">
                 <Link
                   to={"/"}
                   className="flex gap-1 items-center justify-center bg-primary rounded-lg text-lg py-1 px-2 lg:py-2 lg:px-4 text-white"
@@ -57,10 +66,16 @@ const Header = () => {
                 </Link>
                 <button
                   onClick={logoutHandler}
-                  className="flex gap-1 items-center justify-center bg-secondary rounded-lg text-lg hidden md:flex py-1 px-2 lg:py-2 lg:px-4 text-primary shadow-md shadow-primary"
+                  className="flex gap-1 items-center justify-center bg-secondary rounded-lg text-lg md:flex py-1 px-2 lg:py-2 lg:px-4 text-black"
+                  style={{
+                    boxShadow: "4px 4px 8px rgba(255, 152, 57,0.6)",
+                  }}
                 >
-                  LogOut
+                  {t("LogOut")}
                 </button>
+                <div className="hidden md:flex">
+                  <LanguageSelector />
+                </div>
               </div>
             ) : (
               <div className="flex gap-2 z-20">
@@ -115,7 +130,12 @@ const Header = () => {
           </div>
 
           {/* Navigation Links */}
-          <div>
+          <div
+            className={`${
+              isMenuOpen ? "block" : "hidden"
+            } w-full lg:w-auto lg:block`}
+            id="navbar-sticky"
+          >
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0">
               <li>
                 <Link
@@ -156,13 +176,16 @@ const Header = () => {
                 <Link
                   to="/help"
                   className={`block my-2 py-2 px-3 rounded lg:p-0 lg:text-xl ${
-                    location.pathname === "/about"
+                    location.pathname === "/help"
                       ? "text-primary"
                       : "text-black"
                   }`}
                 >
                   {t("Help Center")}
                 </Link>
+              </li>
+              <li className={`${isMenuOpen ? "block" : "hidden"}`}>
+                <LanguageSelector />
               </li>
             </ul>
           </div>
@@ -173,81 +196,3 @@ const Header = () => {
 };
 
 export default Header;
-
-{
-  /* <Link to={"/"} className="w-72">
-        <img
-          src="https://res.cloudinary.com/agmern/image/upload/v1733151115/ywgwtmztp50yldwonefy.jpg"
-          alt=""
-          className="w-full"
-        />
-      </Link>
-      <div className="flex gap-12 uppercase text-lg text-white">
-        <Link to={"/"} className="font-semibold text-black">
-          {t("Home")}
-        </Link>
-        <Link to={"/"} className="font-semibold text-black">
-          {t("About")}
-        </Link>
-        <Link to={"/"} className="font-semibold text-black">
-          {t("Explore")}
-        </Link>
-      </div>
-      {isAuth ? (
-        <div className="flex gap-2">
-          <Link
-            to={"/"}
-            className="flex gap-1 items-center justify-center bg-primary rounded-lg text-lg py-2 px-4 text-white"
-            style={{
-              boxShadow: "4px 4px 8px rgba(72, 46, 29,0.6)",
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="size-8"
-            >
-              <path
-                fillRule="evenodd"
-                d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                clipRule="evenodd"
-              />
-            </svg>
-
-            {!!user && <div>{user?.email.split("g")[0]}</div>}
-          </Link>
-          <button
-            onClick={logoutHandler}
-            className="flex gap-1 items-center justify-center bg-secondary rounded-lg text-lg py-2 px-4 text-primary shadow-md shadow-primary"
-          >
-            LogOut
-          </button>
-        </div>
-      ) : (
-        <div className="flex gap-2 z-20">
-          <Link
-            to={"/login"}
-            className="flex gap-1 items-center justify-center bg-primary rounded-lg text-lg py-2 px-4 text-white"
-            style={{
-              boxShadow: "4px 4px 8px rgba(72, 46, 29,0.6)",
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="size-8"
-            >
-              <path
-                fillRule="evenodd"
-                d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                clipRule="evenodd"
-              />
-            </svg>
-
-            {"User Login"}
-          </Link>
-        </div>
-      )} */
-}
