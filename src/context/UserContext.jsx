@@ -90,22 +90,24 @@ export const UserProvider = ({ children }) => {
     fetchUser();
   }, []);
   return (
-    <UserContext.Provider
-      value={{
-        loginUser,
-        btnLoading,
-        isAuth,
-        setIsAuth,
-        user,
-        verifyUser,
-        loading,
-        logoutHandler,
-        showOTPWindow,
-      }}
-    >
-      {children}
+    <>
+      <UserContext.Provider
+        value={{
+          loginUser,
+          btnLoading,
+          isAuth,
+          setIsAuth,
+          user,
+          verifyUser,
+          loading,
+          logoutHandler,
+          showOTPWindow,
+        }}
+      >
+        {children}
+      </UserContext.Provider>
       <Toaster />
-    </UserContext.Provider>
+    </>
   );
 };
 

@@ -4,6 +4,7 @@ import { LoadingSpinner } from "../components/Loading";
 import toast from "react-hot-toast";
 import PostOfficeList from "../components/PostOfficeList";
 import Verify from "./Verify";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [showPostOfficeList, setShowPostOfficeList] = useState(false); // State to show PostOfficeList
   const { btnLoading, showOTPWindow, setShowOTPWindow } = UserData();
-
+  const { t } = useTranslation();
   const showDetails = (e) => {
     e.preventDefault();
     if (!postalID || !password || !email) {
@@ -27,7 +28,7 @@ const Login = () => {
   return (
     <>
       <div
-        className={`flex flex-col gap-6 justify-center items-center py-10 font-serif px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 ${
+        className={`flex flex-col min-h-screen gap-6 justify-center items-center py-10 font-serif px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 ${
           showPostOfficeList ? "blur-sm" : ""
         }`}
         style={{
@@ -35,7 +36,7 @@ const Login = () => {
           backgroundSize: "cover",
           backgroundPosition: "repeat",
           backgroundRepeat: "no-repeat",
-          height: "100vh",
+          height: "100%",
         }}
       >
         <div className="w-full max-w-md relative flex flex-col gap-4 justify-center items-center bg-secondary border-[16px] border-primary shadow-lg rounded-lg p-6 sm:p-4 md:p-6 lg:p-8">
@@ -49,11 +50,11 @@ const Login = () => {
           </div>
           <div className="w-full h-full p-8 rounded-xl bg-tertiary">
             <h1 className="playfair-display-500 text-xl text-center text-black mb-2 sm:text-3xl md:text-4xl font-bold">
-              LogIn/SignUp
+              {t("LogIn")}/{t("Register")}
             </h1>
             <div className="w-full mb-4">
               <label className="self-start text-left mb-2" htmlFor="email">
-                Email:
+                {t("Email")}:
               </label>
               <input
                 id="email"
@@ -66,7 +67,7 @@ const Login = () => {
             </div>
             <div className="w-full mb-4">
               <label className="self-start text-left mb-2" htmlFor="postalID">
-                PostalID:
+                {t("Pincode")}:
               </label>
               <input
                 id="postalID"
@@ -79,7 +80,7 @@ const Login = () => {
             </div>
             <div className="w-full mb-4">
               <label className="self-start text-left mb-2" htmlFor="password">
-                Password:
+                {t("Password")}:
               </label>
               <input
                 id="password"
@@ -101,11 +102,11 @@ const Login = () => {
             </div>
             <div className="text-center">
               <h1 className="text-sm sm:text-base text-black">
-                By creating an account, you agree to the{" "}
+                {t("line1")}{" "}
                 <span className="text-primary spirax-regular">
                   yojna sahayak
                 </span>{" "}
-                Terms of Service and Privacy Policy
+                {t("line2")}
               </h1>
             </div>
           </div>

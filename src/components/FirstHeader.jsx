@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
-
+import LanguageSelector from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 const FirstHeader = ({ headerRef }) => {
+  const { t } = useTranslation();
   return (
     <header
       ref={headerRef}
       className="flex justify-between items-center p-2 bg-white"
     >
-      <div className="w-full flex flex-wrap items-center justify-center sm:gap-20 md:gap-40 lg:gap-80 p-4">
+      <div className="w-full flex flex-wrap items-center justify-center md:gap-10 lg:gap-80 p-4">
         <div className="flex items-center gap-2">
           <Link
             to="/"
@@ -29,7 +31,7 @@ const FirstHeader = ({ headerRef }) => {
               boxShadow: "4px 4px 8px rgba(72, 46, 29,0.6)",
             }}
           >
-            Sign-In
+            {t("LogIn")}
           </Link>
           <Link
             to={"/feedback"}
@@ -38,8 +40,9 @@ const FirstHeader = ({ headerRef }) => {
               boxShadow: "4px 4px 8px rgba(72, 46, 29,0.6)",
             }}
           >
-            Feedback
+            {t("Suggestion")}
           </Link>
+          <LanguageSelector />
         </div>
       </div>
     </header>

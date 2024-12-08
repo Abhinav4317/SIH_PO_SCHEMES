@@ -149,12 +149,12 @@ const Header = () => {
                       : "text-black"
                   }`}
                 >
-                  {t("Feedback")}
+                  {t("Suggestion")}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/about"
+                  to="/help"
                   className={`block my-2 py-2 px-3 rounded lg:p-0 lg:text-xl ${
                     location.pathname === "/about"
                       ? "text-primary"

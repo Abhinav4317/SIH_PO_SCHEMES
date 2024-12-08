@@ -14,7 +14,7 @@ const LanguageSelector = () => {
     i18n.changeLanguage(e.target.value);
   };
   return (
-    <div className="hidden">
+    <div className="">
       <label>
         Select language:
         <select value={lang} onChange={changeLanguage}>

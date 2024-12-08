@@ -2,7 +2,8 @@ import { useTranslation } from "react-i18next";
 import Header from "../components/Header";
 import PincodeMap from "../components/PincodeMap";
 import { UserData } from "../context/UserContext";
-import LanguageSelector from "../components/LanguageSelector";
+import FeedbackDisplay from "../components/FeedbackDisplay";
+import DemographicDisplay from "../components/DemographicDisplay";
 
 const Home = () => {
   const { user } = UserData();
@@ -11,8 +12,9 @@ const Home = () => {
   return (
     <div className="w-full min-h-screen bg-white">
       <Header />
-      <LanguageSelector />
       <PincodeMap pincode={user?.postalID} />
+      <FeedbackDisplay />
+      <DemographicDisplay />
     </div>
   );
 };
