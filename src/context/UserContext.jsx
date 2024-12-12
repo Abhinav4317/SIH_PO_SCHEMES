@@ -2,13 +2,60 @@ import { createContext, useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { auth_server } from "../main";
+import { useTranslation } from "react-i18next";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [btnLoading, setBtnLoading] = useState(false);
   const [showOTPWindow, setShowOTPWindow] = useState(false);
-  async function loginUser(email, postalID, password) {
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
+  const getFontClass = () => {
+    if (currentLanguage.startsWith("hi")) return "font-hindi";
+    if (currentLanguage.startsWith("ta")) return "font-tamil";
+    return "font-english";
+  };
+  async function getLocationFromPincode(pincode) {
+    try {
+      if (!pincode) {
+        throw new Error("Pincode is required.");
+      }
+
+      const response = await axios.get(
+        `https://nominatim.openstreetmap.org/search`,
+        {
+          params: {
+            q: pincode,
+            format: "json",
+            addressdetails: 1,
+          },
+        }
+      );
+
+      if (response.data.length === 0) {
+        throw new Error("No location found for this pincode.");
+      }
+
+      const location = response.data[0]; // Take the first result
+      return {
+        latitude: location.lat,
+        longitude: location.lon,
+        loc: location.display_name,
+      };
+    } catch (error) {
+      console.error("Error fetching location:", error.message);
+      throw error; // Rethrow the error for further handling
+    }
+  }
+  async function loginUser(
+    email,
+    postalID,
+    password,
+    selectedPostOffice,
+    empID
+  ) {
     setBtnLoading(true);
     try {
       const p = password ? password : "";
@@ -16,6 +63,8 @@ export const UserProvider = ({ children }) => {
         email,
         postalID,
         password: p,
+        postOfficeName: selectedPostOffice,
+        empID,
       });
       console.log(data);
       toast.success(data.message);
@@ -70,6 +119,7 @@ export const UserProvider = ({ children }) => {
       setIsAuth(true);
       setUser(data);
       setLoading(false);
+      return data;
     } catch (error) {
       console.log(error);
       setIsAuth(false);
@@ -85,9 +135,18 @@ export const UserProvider = ({ children }) => {
     setUser([]);
     navigate("/");
   };
-
+  const [place, setPlace] = useState("");
   useEffect(() => {
-    fetchUser();
+    fetchUser().then((data) => {
+      console.log("user", data);
+      getLocationFromPincode(data?.postalID)
+        .then(({ latitude, longitude, loc }) => {
+          setPlace(loc);
+        })
+        .catch((error) => {
+          console.error("Error:", error.message);
+        });
+    });
   }, []);
   return (
     <>
@@ -102,6 +161,8 @@ export const UserProvider = ({ children }) => {
           loading,
           logoutHandler,
           showOTPWindow,
+          getFontClass,
+          place,
         }}
       >
         {children}

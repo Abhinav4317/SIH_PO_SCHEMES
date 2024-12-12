@@ -1,184 +1,268 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import { useTranslation } from "react-i18next";
+import { UserData } from "../context/UserContext";
+import { AdminData } from "../context/AdminContext";
 const postOfficeSchemes = [
   { index: 1, name: "Post Office Savings Account" },
   { index: 2, name: "5-Year Post Office Recurring Deposit Account (RD)" },
   { index: 3, name: "Post Office Time Deposit Account (TD)" },
-  { index: 4, name: "Post Office Monthly Income Account Scheme (MIS)" },
-  { index: 5, name: "Senior Citizen Savings Scheme (SCSS)" },
+  { index: 4, name: "National Savings Certificates (NSC)" },
+  { index: 5, name: "Kisan Vikas Patra (KVP)" },
   { index: 6, name: "15 year Public Provident Fund Account (PPF)" },
-  { index: 7, name: "National Savings Certificates (NSC)" },
-  { index: 8, name: "Kisan Vikas Patra (KVP)" },
-  { index: 9, name: "Sukanya Samriddhi Accounts" },
+  { index: 7, name: "Sukanya Samriddhi Accounts" },
+  { index: 8, name: "Senior Citizen Savings Scheme (SCSS)" },
+  { index: 9, name: "Post Office Monthly Income Account Scheme (MIS)" },
 ];
 const schemeArray = [
   [
-    "PostOfficeSavingsAccount.InterestRates",
-    "PostOfficeSavingsAccount.MinAmount",
-    "PostOfficeSavingsAccount.MaxBalance",
-    "PostOfficeSavingsAccount.TR1S1",
-    "PostOfficeSavingsAccount.TR2S1",
-    "PostOfficeSavingsAccount.TR3S1",
-    "PostOfficeSavingsAccount.TR4S1",
+    "Post Office Savings Account1.Description",
+    "Post Office Savings Account1.Interest Rate",
+    "Post Office Savings Account1.Minimum Deposit",
+    "Post Office Savings Account1.Eligibility",
+    "Post Office Savings Account1.Features",
   ],
-
   [
-    "PostOfficeRD.InterestRates",
-    "PostOfficeRD.MinAmount",
-    "PostOfficeRD.MaxBalance",
-    "PostOfficeRD.TR1S2",
-    "PostOfficeRD.TR2S2",
-    "PostOfficeRD.TR3S2",
-    "PostOfficeRD.TR4S2",
+    "Recurring Deposit (RD)1.Description",
+    "Recurring Deposit (RD)1.Interest Rate",
+    "Recurring Deposit (RD)1.Tenure",
+    "Recurring Deposit (RD)1.Minimum Deposit",
+    "Recurring Deposit (RD)1.Features",
   ],
-
   [
-    "PostOfficeTD.InterestRates",
-    "PostOfficeTD.MinAmount",
-    "PostOfficeTD.MaxBalance",
-    "PostOfficeTD.TR1S3",
-    "PostOfficeTD.TR2S3",
-    "PostOfficeTD.TR3S3",
-    "PostOfficeTD.TR4S3",
+    "Time Deposit (TD)1.Description",
+    "Time Deposit (TD)1.Interest Rates.1 Year",
+    "Time Deposit (TD)1.Interest Rates.2 Years",
+    "Time Deposit (TD)1.Interest Rates.3 Years",
+    "Time Deposit (TD)1.Interest Rates.5 Years",
+    "Time Deposit (TD)1.Minimum Deposit",
+    "Time Deposit (TD)1.Features",
   ],
-
   [
-    "PostOfficeMIS.InterestRates",
-    "PostOfficeMIS.MinAmount",
-    "PostOfficeMIS.MaxBalance",
-    "PostOfficeMIS.TR1S4",
-    "PostOfficeMIS.TR2S4",
-    "PostOfficeMIS.TR3S4",
-    "PostOfficeMIS.TR4S4",
+    "National Savings Certificate (NSC)1.Description",
+    "National Savings Certificate (NSC)1.Interest Rate",
+    "National Savings Certificate (NSC)1.Tenure",
+    "National Savings Certificate (NSC)1.Minimum Deposit",
+    "National Savings Certificate (NSC)1.Features",
   ],
-
   [
-    "SeniorCitizenSSS.InterestRates",
-    "SeniorCitizenSSS.MinAmount",
-    "SeniorCitizenSSS.MaxBalance",
-    "SeniorCitizenSSS.TR1S5",
-    "SeniorCitizenSSS.TR2S5",
-    "SeniorCitizenSSS.TR3S5",
-    "SeniorCitizenSSS.TR4S5",
+    "Kisan Vikas Patra (KVP)1.Description",
+    "Kisan Vikas Patra (KVP)1.Interest Rate",
+    "Kisan Vikas Patra (KVP)1.Maturity Period",
+    "Kisan Vikas Patra (KVP)1.Minimum Deposit",
+    "Kisan Vikas Patra (KVP)1.Features",
   ],
-
   [
-    "PPF.InterestRates",
-    "PPF.MinAmount",
-    "PPF.MaxBalance",
-    "PPF.TR1S6",
-    "PPF.TR2S6",
-    "PPF.TR3S6",
-    "PPF.TR4S6",
+    "Public Provident Fund (PPF)1.Description",
+    "Public Provident Fund (PPF)1.Interest Rate",
+    "Public Provident Fund (PPF)1.Tenure",
+    "Public Provident Fund (PPF)1.Minimum Deposit",
+    "Public Provident Fund (PPF)1.Maximum Deposit",
+    "Public Provident Fund (PPF)1.Features",
   ],
-
   [
-    "NSC.InterestRates",
-    "NSC.MinAmount",
-    "NSC.MaxBalance",
-    "NSC.TR1S7",
-    "NSC.TR2S7",
-    "NSC.TR3S7",
-    "NSC.TR4S7",
+    "Sukanya Samriddhi Yojana (SSY)1.Description",
+    "Sukanya Samriddhi Yojana (SSY)1.Interest Rate",
+    "Sukanya Samriddhi Yojana (SSY)1.Tenure",
+    "Sukanya Samriddhi Yojana (SSY)1.Minimum Deposit",
+    "Sukanya Samriddhi Yojana (SSY)1.Maximum Deposit",
+    "Sukanya Samriddhi Yojana (SSY)1.Features",
   ],
-
   [
-    "KVP.InterestRates",
-    "KVP.MinAmount",
-    "KVP.MaxBalance",
-    "KVP.TR1S8",
-    "KVP.TR2S8",
-    "KVP.TR3S8",
-    "KVP.TR4S8",
+    "Senior Citizen Savings Scheme (SCSS)1.Description",
+    "Senior Citizen Savings Scheme (SCSS)1.Interest Rate",
+    "Senior Citizen Savings Scheme (SCSS)1.Tenure",
+    "Senior Citizen Savings Scheme (SCSS)1.Maximum Deposit",
+    "Senior Citizen Savings Scheme (SCSS)1.Eligibility",
+    "Senior Citizen Savings Scheme (SCSS)1.Features",
   ],
-
   [
-    "SukanyaSamriddhi.InterestRates",
-    "SukanyaSamriddhi.MinAmount",
-    "SukanyaSamriddhi.MaxBalance",
-    "SukanyaSamriddhi.TR1S9",
-    "SukanyaSamriddhi.TR2S9",
-    "SukanyaSamriddhi.TR3S9",
-    "SukanyaSamriddhi.TR4S9",
+    "Monthly Income Scheme (MIS)1.Description",
+    "Monthly Income Scheme (MIS)1.Interest Rate",
+    "Monthly Income Scheme (MIS)1.Tenure",
+    "Monthly Income Scheme (MIS)1.Maximum Deposit",
+    "Monthly Income Scheme (MIS)1.Features",
   ],
+];
+const pli = [
+  [
+    "Whole Life Assurance (Suraksha).Description",
+    "Whole Life Assurance (Suraksha).Coverage",
+    "Whole Life Assurance (Suraksha).Minimum Sum Assured",
+    "Whole Life Assurance (Suraksha).Benefits",
+  ],
+  [
+    "Convertible Whole Life Assurance (Suvidha).Description",
+    "Convertible Whole Life Assurance (Suvidha).Coverage",
+    "Convertible Whole Life Assurance (Suvidha).Minimum Sum Assured",
+    "Convertible Whole Life Assurance (Suvidha).Loan Facility",
+  ],
+  [
+    "Endowment Assurance (Santosh).Description",
+    "Endowment Assurance (Santosh).Coverage",
+    "Endowment Assurance (Santosh).Minimum Sum Assured",
+    "Endowment Assurance (Santosh).Bonus",
+  ],
+  [
+    "Joint Life Assurance (Yugal Suraksha).Description",
+    "Joint Life Assurance (Yugal Suraksha).Coverage",
+    "Joint Life Assurance (Yugal Suraksha).Minimum Sum Assured",
+    "Joint Life Assurance (Yugal Suraksha).Bonus",
+  ],
+  [
+    "Anticipated Endowment Assurance (Sumangal).Description",
+    "Anticipated Endowment Assurance (Sumangal).Features",
+  ],
+];
+const rpli = [
+  ["Gram Suraksha.Description"],
+  ["Gram Suvidha.Description"],
+  ["Gram Santosh.Description"],
+  ["Gram Sumangal.Description"],
+  ["Gram Priya.Description"],
 ];
 
 const Schemes = () => {
   const { t } = useTranslation();
-  const [openIndex, setOpenIndex] = useState(null);
-  const toggleDropdown = (index) => {
-    setOpenIndex((prevIndex) => (prevIndex === index ? null : index)); // Toggle open/close
-  };
+  const { getFontClass } = UserData();
+  const [show, setShow] = useState("banking");
+  const { isAuth } = AdminData();
   return (
-    <div className="w-full min-h-screen">
-      <Header />
-      <h1 className="mt-32 text-center text-black text-2xl font-bold font-serif">
+    <div
+      className={`w-full min-h-screen ${getFontClass()} flex flex-col gap-2 items-center justify-center`}
+    >
+      {isAuth ? <Header /> : ""}
+      <h1
+        className={`${
+          isAuth ? "mt-32" : "mt-8"
+        } text-center text-black text-2xl font-bold font-serif`}
+      >
         {t("Schemes Info")}
       </h1>
-      <div className="w-full h-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3 p-8">
-        {schemeArray?.length > 0 &&
-          schemeArray.map((scheme, index) => (
-            <div
-              key={index}
-              className="bg-primary text-black w-full my-2 px-3 py-2 rounded-md shadow-md shadow-black cursor-pointer transition-all"
-              onClick={() => toggleDropdown(index)}
-            >
-              {/* Basic Details */}
-              <div className="w-full flex justify-between items-center">
-                <h2 className="font-bold text-xl">
-                  {t(postOfficeSchemes[index]?.name)}
-                </h2>
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`h-5 w-5 transition-transform duration-500 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
+      <div className="flex gap-2">
+        <button
+          onClick={() => setShow("banking")}
+          className={`px-4 py-2 rounded-full ${
+            show === "banking" ? "bg-primary" : ""
+          } border-2 border-black`}
+        >
+          Savings & Loan
+        </button>
+        <button
+          onClick={() => setShow("insurance")}
+          className={`px-4 py-2 rounded-full ${
+            show === "insurance" ? "bg-primary" : ""
+          } border-2 border-black`}
+        >
+          Insurance
+        </button>
+      </div>
+      <div className="w-full h-screen flex flex-col items-center justify-center">
+        <div className="w-[98%] h-screen flex gap-2 p-4">
+          <div className="w-1/4 h-[70%] flex flex-col gap-2 flex-wrap overflow-y-auto">
+            <ul className="list-decimal pl-6">
+              {show === "banking" &&
+                postOfficeSchemes.map(({ index, name }) => (
+                  <li
+                    key={index}
+                    className="w-full mb-4 hover:bg-primary px-4 py-2 rounded-lg"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+                    <a href={`#${index - 1}`}>{name}</a>
+                  </li>
+                ))}
+              {show === "insurance" && (
+                <ul className="list-decimal pl-5">
+                  <li>Postal Life Insurance</li>
+                  <ul className="list-disc pl-7">
+                    {pli.length &&
+                      pli.map((is, index) => (
+                        <li
+                          key={index}
+                          className="w-full mb-4 hover:bg-primary px-4 py-2 rounded-lg"
+                        >
+                          <a href={`#${index}`}>{is[0].split(".")[0]}</a>
+                        </li>
+                      ))}
+                  </ul>
+                  <li>Rural Postal Life Insurance</li>
+                  <ul className="list-disc pl-7">
+                    {rpli.length &&
+                      rpli.map((ris, index) => (
+                        <li
+                          key={index}
+                          className="w-full mb-4 hover:bg-primary px-4 py-2 rounded-lg"
+                        >
+                          <a href={`#${index + 6}`}>{ris[0].split(".")[0]}</a>
+                        </li>
+                      ))}
+                  </ul>
+                </ul>
+              )}
+            </ul>
+          </div>
+          <div className="w-3/4 h-full flex flex-col gap-2">
+            {show === "banking" &&
+              schemeArray.length &&
+              schemeArray.map((scheme, index) => (
+                <div
+                  key={index}
+                  className="w-[90%] bg-secondary p-10 rounded-lg mb-2"
+                  id={index + 1}
+                >
+                  <h1 className="text-4xl mb-4">{scheme[0].split("1")[0]}</h1>
+                  {scheme.length &&
+                    scheme.map((desc, idx) => (
+                      <div key={idx}>
+                        <span className="font-bold mr-2">
+                          {desc.split(".")[1]}:
+                        </span>
+                        {t(desc)}
+                      </div>
+                    ))}
                 </div>
-              </div>
-
-              {/* Additional Details */}
-              <div
-                className={`mt-4 overflow-hidden transition-all duration-500 ease-in-out ${
-                  openIndex === index ? "max-h-screen" : "max-h-0"
-                }`}
-              >
-                {/* Wrap dropdown details in a child div to isolate height changes */}
-                <div className="flex flex-col gap-2 text-md">
-                  <div>
-                    <strong>{t("IR")}:</strong> {t(scheme[0])}
-                  </div>
-                  <div>
-                    <strong>{t("MA")}:</strong> {t(scheme[1])}
-                  </div>
-                  <div>
-                    <strong>{t("MB")}:</strong> {t(scheme[2])}
-                  </div>
-                  <div>
-                    <strong>{t("TR")}:</strong>
-                    <ul className="list-disc pl-5">
-                      <li>{t(scheme[3])}</li>
-                      <li>{t(scheme[4])}</li>
-                      <li>{t(scheme[5])}</li>
-                      <li>{t(scheme[6])}</li>
-                    </ul>
-                  </div>
+              ))}
+            {show === "insurance" &&
+              pli.length &&
+              pli.map((is, index) => (
+                <div
+                  key={index}
+                  className="w-[90%] bg-secondary p-10 rounded-lg mb-2"
+                  id={index + 1}
+                >
+                  <h1 className="text-4xl mb-4">{is[0].split(".")[0]}</h1>
+                  {is.length &&
+                    is.map((desc, idx) => (
+                      <div key={idx}>
+                        <span className="font-bold mr-2">
+                          {desc.split(".")[1]}:
+                        </span>
+                        {t(desc)}
+                      </div>
+                    ))}
                 </div>
-              </div>
-            </div>
-          ))}
+              ))}
+            {show === "insurance" &&
+              rpli.length &&
+              rpli.map((ris, index) => (
+                <div
+                  key={index}
+                  className="w-[90%] bg-secondary p-10 rounded-lg mb-2"
+                  id={index + 6}
+                >
+                  <h1 className="text-4xl mb-4">{ris[0].split(".")[0]}</h1>
+                  {ris.length &&
+                    ris.map((desc, idx) => (
+                      <div key={idx}>
+                        <span className="font-bold mr-2">
+                          {desc.split(".")[1]}:
+                        </span>
+                        {t(desc)}
+                      </div>
+                    ))}
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );

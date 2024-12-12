@@ -2,18 +2,26 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoadingSpinner } from "../components/Loading";
 import { UserData } from "../context/UserContext";
+import { AdminData } from "../context/AdminContext"; // Import AdminContext
 
-const Verify = ({ closeOTPWindow }) => {
+const Verify = ({ closeOTPWindow, portal }) => {
   const [otp, setOtp] = useState("");
 
-  const { verifyUser, btnLoading } = UserData();
+  const { verifyUser, btnLoading: userBtnLoading } = UserData();
+  const { verifyAdmin, btnLoading: adminBtnLoading } = AdminData() || {}; // Default to an empty object if AdminContext is not available
 
   const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    verifyUser(Number(otp), navigate);
+
+    if (portal === "user") {
+      verifyUser(Number(otp), navigate); // For user portal, verify using user function
+    } else if (portal === "admin") {
+      verifyAdmin(Number(otp), navigate); // For admin portal, verify using admin function
+    }
   };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <form
@@ -42,14 +50,14 @@ const Verify = ({ closeOTPWindow }) => {
           <button
             onClick={submitHandler}
             className="w-[20%] text-center font-bold py-1 bg-secondary rounded-lg text-black"
-            disabled={btnLoading}
+            disabled={userBtnLoading || adminBtnLoading}
           >
-            {btnLoading ? <LoadingSpinner /> : "Submit"}
+            {userBtnLoading || adminBtnLoading ? <LoadingSpinner /> : "Submit"}
           </button>
           <button
             onClick={closeOTPWindow}
             className="w-[20%] text-center font-bold py-1 bg-black rounded-lg text-white"
-            disabled={btnLoading}
+            disabled={userBtnLoading || adminBtnLoading}
           >
             {"Back"}
           </button>

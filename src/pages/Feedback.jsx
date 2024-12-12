@@ -26,7 +26,7 @@ const Feedback = () => {
   const [schemes, setSchemes] = useState([]);
   const [suggestion, setSuggestion] = useState("");
   const [redirect, setRedirect] = useState(""); // State to hold text input from React Quill
-  const { isAuth } = UserData();
+  const { isAuth, getFontClass } = UserData();
   console.log(isAuth);
   const { t } = useTranslation();
   const handleCheckboxChange = (scheme) => {
@@ -67,7 +67,7 @@ const Feedback = () => {
     return <Navigate to={redirect} />;
   }
   return (
-    <div className={`w-full h-full ${isAuth ? "mt-32" : ""}`}>
+    <div className={`w-full h-full ${isAuth ? "mt-32" : ""} ${getFontClass()}`}>
       {isAuth ? <Header /> : <FirstHeader />}
       <div className="w-full flex flex-col gap-4 items-center">
         <h1 className="text-primary font-bold text-3xl font-serif">
@@ -76,7 +76,7 @@ const Feedback = () => {
         <div className="flex flex-col w-[75%] bg-[#FFD5A0] px-10 py-8 rounded-2xl mb-4">
           <div>
             <label htmlFor="pincode" className="text-xl font-bold mr-4">
-              {t("Pincode")}:
+              {t("Pincode")}*:
             </label>
             <input
               type="text"
@@ -85,7 +85,7 @@ const Feedback = () => {
               onChange={(e) => setPincode(e.target.value)}
             />
           </div>
-          <hr className="my-2 border-t-4 border-black" />
+          <hr className="mt-2 border-t-4 border-black" />
           <div>
             <h3 className="font-bold mt-2 text-xl">{t("Select Schemes")}:</h3>
             <div className="w-full grid sm:grid-cols-1 md:grid-cols-2 gap-8 mt-2">
@@ -103,7 +103,7 @@ const Feedback = () => {
 
                     {/* Custom checkbox */}
                     <span
-                      className={`w-6 h-6 border-2 rounded-full flex items-center justify-center transition-all duration-200 
+                      className={`min-w-6 min-h-6 border-2 rounded-full flex items-center justify-center transition-all duration-200 
             ${
               schemes.includes(scheme.name)
                 ? "bg-primary border-primary"
@@ -111,7 +111,7 @@ const Feedback = () => {
             }
             ${
               schemes.includes(scheme.name)
-                ? "after:block after:w-4 after:h-4 after:bg-white after:rounded-full"
+                ? "after:block after:w-0 after:h-0 after:bg-white after:rounded-full"
                 : ""
             }`}
                     >
@@ -141,7 +141,7 @@ const Feedback = () => {
               ))}
             </div>
           </div>
-          <hr className="my-2 border-t-4 border-black" />
+          <hr className="mt-2 border-t-4 border-black" />
           <div>
             <h3 className="font-bold mt-2 text-xl">
               {t("Other Suggestions")}:

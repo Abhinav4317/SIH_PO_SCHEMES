@@ -40,7 +40,7 @@ const FeedbackDisplay = () => {
   const [schemeToScore, setSchemeToScore] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control popup visibility
-  const { user } = UserData();
+  const { user, getFontClass } = UserData();
   const { t } = useTranslation();
   const pincode = user?.postalID;
 
@@ -105,7 +105,9 @@ const FeedbackDisplay = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center gap-3 mt-4">
+    <div
+      className={`w-full flex flex-col items-center gap-3 mt-4 ${getFontClass()}`}
+    >
       {/* Div to display and open the popup */}
       <div
         className="w-[90%] bg-primary border-8 border-tertiary text-center p-8 text-2xl font-serif rounded-lg cursor-pointer"
@@ -120,12 +122,7 @@ const FeedbackDisplay = () => {
       {/* Modal popup */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div
-            className="bg-secondary w-[85%] max-w-[900px] h-[80%] p-6 rounded-lg relative border-4 border-primary shadow-lg flex flex-col items-center gap-6 overflow-y-auto"
-            style={{
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-            }}
-          >
+          <div className="bg-secondary w-[85%] max-w-[900px] h-[80%] p-6 rounded-lg relative border-4 border-primary shadow-lg flex flex-col items-center gap-6 overflow-y-auto">
             {/* Close button */}
             <button
               className="absolute top-4 right-4 text-2xl font-bold"
@@ -135,8 +132,7 @@ const FeedbackDisplay = () => {
             </button>
 
             <h1 className="text-xl text-center font-serif mb-4">
-              Following is a representation of the demand for different schemes
-              in your region:
+              {t("demand_representation")}
             </h1>
 
             {/* Bar Chart for schemes vs scores */}
@@ -150,7 +146,7 @@ const FeedbackDisplay = () => {
               <ul className="list-disc ml-4">
                 {Object.entries(shortScheme).map(([full, short], index) => (
                   <li key={index}>
-                    <strong>{short}</strong>: {full}
+                    <strong>{short}</strong>: {t(full)}
                   </li>
                 ))}
               </ul>

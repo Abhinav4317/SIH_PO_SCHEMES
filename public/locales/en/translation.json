@@ -7,6 +7,7 @@
   "SuggestionSub": "(Click to view what the civilians in your region suggest to promote)",
   "Demo": "Region Demographic",
   "DemoSub": "(Click each tab below to view pictorial visualisation on different parameters)",
+  "Predicted Trends Presentation":"Predicted Trends Presentation",
   "Help Center": "Help Center",
   "LogIn": "Sign-In",
   "LogOut": "LogOut",
@@ -34,91 +35,136 @@
   "MA": "Minimum Amount for opening of account",
   "MB": "Maximum Balance that can be maintained",
   "TR": "Salient Features including Tax Rebate",
-  "PostOfficeSavingsAccount": {
-    "InterestRates": "4% per annum (compounded quarterly)",
-    "MinAmount": "₹500",
-    "MaxBalance": "₹1,50,000 (individual), ₹3,00,000 (joint)",
-    "TR1S1": "Interest is taxable",
-    "TR2S1": "No TDS on balance < ₹10,000",
-    "TR3S1": "Transferable across Post Offices",
-    "TR4S1": "Loan facility available"
-  },
-  "PostOfficeRD": {
-    "InterestRates": "5.8% per annum",
-    "MinAmount": "₹100 per month",
-    "MaxBalance": "No limit",
-    "TR1S2": "Tax benefits under Section 80C",
-    "TR2S2": "TDS applicable on interest",
-    "TR3S2": "Premature closure allowed with penalty",
-    "TR4S2": "Ideal for long-term savings"
-  },
-  "PostOfficeTD": {
-    "InterestRates": "1 year: 6.6%, 2 years: 6.8%, 3 years: 7.0%, 5 years: 7.5%",
-    "MinAmount": "₹200",
-    "MaxBalance": "No limit",
-    "TR1S3": "Tax benefits under Section 80C (5-year term)",
-    "TR2S3": "Premature closure penalty",
-    "TR3S3": "Quarterly interest payout",
-    "TR4S3": "Nomination facility available"
-  },
-  "PostOfficeMIS": {
-    "InterestRates": "6.6% per annum (monthly payout)",
-    "MinAmount": "₹1,500",
-    "MaxBalance": "₹4,50,000 (individual), ₹9,00,000 (joint)",
-    "TR1S4": "Interest is taxable",
-    "TR2S4": "Ideal for retirees",
-    "TR3S4": "Premature withdrawal with penalty",
-    "TR4S4": "Monthly payouts"
-  },
-  "SeniorCitizenSSS": {
-    "InterestRates": "8.0% per annum (quarterly payout)",
-    "MinAmount": "₹1,000",
-    "MaxBalance": "₹15,00,000",
-    "TR1S5": "Tax exemption under Section 80C",
-    "TR2S5": "Premature withdrawal with penalty",
-    "TR3S5": "Quarterly interest payout",
-    "TR4S5": "Interest taxable"
-  },
-  "PPF": {
-    "InterestRates": "7.1% per annum (compounded annually)",
-    "MinAmount": "₹500",
-    "MaxBalance": "₹1.5 lakh per year",
-    "TR1S6": "Tax-free interest",
-    "TR2S6": "Loan facility available after 3 years",
-    "TR3S6": "Tax exemption under Section 80C",
-    "TR4S6": "Partial withdrawals after 6 years"
-  },
-  "NSC": {
-    "InterestRates": "7.7% per annum (compounded annually)",
-    "MinAmount": "₹100",
-    "MaxBalance": "No limit",
-    "TR1S7": "Tax savings under Section 80C",
-    "TR2S7": "Interest taxable but TDS applicable",
-    "TR3S7": "Fixed 5-year tenure",
-    "TR4S7": "Can be pledged as collateral"
-  },
-  "KVP": {
-    "InterestRates": "7.7% per annum (doubling in 124 months)",
-    "MinAmount": "₹1,000",
-    "MaxBalance": "No limit",
-    "TR1S8": "Tax benefits under Section 80C",
-    "TR2S8": "Double investment in 124 months",
-    "TR3S8": "Transferable across Post Offices",
-    "TR4S8": "Can be used as collateral"
-  },
-  "SukanyaSamriddhi": {
-    "InterestRates": "8.0% per annum (compounded annually)",
-    "MinAmount": "₹250",
-    "MaxBalance": "₹1.5 lakh per year",
-    "TR1S9": "Tax benefits under Section 80C",
-    "TR2S9": "Higher interest than PPF",
-    "TR3S9": "Maturity after 21 years",
-    "TR4S9": "Partial withdrawals after 18 years"
-  },
   "population_age_gender": "Population by Age and Gender",
   "income_level_distribution": "Income Level Distribution",
   "occupation_distribution": "Occupation Distribution",
   "population_trend_age": "Population Trend by Age",
   "population_occupation_gender_split": "Population by Occupation (Gender Split)",
-  "heatmap_population_age_income_occupation": "Heatmap: Population by Age, Income, and Occupation"
+  "heatmap_population_age_income_occupation": "Heatmap: Population by Age, Income, and Occupation",
+  "demand_representation": "Following is a representation of the demand for different schemes in your region:",
+  "Post Office Savings Account1": {
+    "Description": "The Post Office Savings Account is accessible to single adults, joint accounts for two adults, guardians for minors or individuals of unsound mind, and minors aged 10 or above operating independently. Each person may hold only one single account and one minor account. A minimum deposit of ₹500 is required, with no upper limit. Maintaining a ₹500 balance is essential; falling below this incurs a ₹50 maintenance fee, and a zero balance leads to automatic closure. Interest is calculated monthly on the lowest balance between the 10th and month's end, credited annually. Accounts with no transactions for three consecutive financial years become dormant but can be reactivated with updated Know Your Customer (KYC) documents. Additional services include cheque books, ATM cards, e-banking, Aadhaar seeding, and enrollment in government schemes like Atal Pension Yojana and Pradhan Mantri Suraksha Bima Yojana.",
+    "Interest Rate": "4.0% per annum",
+    "Minimum Deposit": "₹500",
+    "Eligibility": "Single adults, joint accounts, minors (above 10 years), and guardians for minors.",
+    "Features": "Easy withdrawals with no upper deposit limit. Interest is tax-exempt up to ₹10,000 annually under Section 80TTA."
+  },
+
+  "Recurring Deposit (RD)1": {
+    "Description": "The Post Office Recurring Deposit (RD) Account is a flexible savings option available to single adults, joint accounts (up to three adults), guardians for minors or individuals of unsound mind, and minors aged 10 or above operating independently. Multiple accounts can be opened by an individual. The account requires a minimum monthly deposit of ₹100, with subsequent deposits in multiples of ₹10. Deposits can be made up to the 15th of each month for accounts opened before the 15th, and up to the last working day for accounts opened after the 15th. Defaults incur a penalty of ₹1 per ₹100 per month, and after four consecutive defaults, the account becomes discontinued but can be revived within two months. Advance deposits for up to five years are permitted, with rebates available for six or twelve installments paid in advance. After 12 installments and one year, a loan facility up to 50% of the balance is available at an interest rate 2% higher than the RD rate. Premature closure is allowed after three years, with interest paid at the Post Office Savings Account rate. The account matures after five years, with an option to extend for another five years. In the event of the account holder's death, the nominee can claim the balance or continue the account until maturity.",
+    "Interest Rate": "6.7% compounded quarterly",
+    "Tenure": "5 years",
+    "Minimum Deposit": "₹100 per month",
+    "Features": "Loan facility available after 1 year. Premature closure permitted after 3 years with a penalty."
+  },
+
+  "Time Deposit (TD)1": {
+    "Description": "The Post Office Time Deposit (TD) Account is a secure investment option available to single adults, joint accounts (up to three adults), guardians for minors or individuals of unsound mind, and minors aged 10 or above operating independently. Investors can open multiple accounts with a minimum deposit of ₹1,000, in multiples of ₹100, with no maximum limit. Accounts are available for tenures of 1, 2, 3, or 5 years, with interest payable annually and credited to the account holder's savings account upon request. The 5-year TD qualifies for tax benefits under Section 80C of the Income Tax Act, 1961. Premature closure is permitted after six months; however, interest penalties apply based on the time of withdrawal. Accounts can be extended for the original tenure within specified periods after maturity, with the applicable interest rate being that on the day of maturity. Additionally, TD accounts can be pledged as security to specified authorities by submitting the required application and acceptance letter at the concerned Post Office.",
+    "Interest Rates": {
+      "1 Year": "6.9%",
+      "2 Years": "7.0%",
+      "3 Years": "7.1%",
+      "5 Years": "7.5%"
+    },
+    "Minimum Deposit": "₹1,000",
+    "Features": "5-year deposits qualify for Section 80C tax benefits. Interest is paid annually."
+  },
+
+  "National Savings Certificate (NSC)1": {
+    "Description": "The Post Office Time Deposit (TD) Account is a secure investment option available to individuals, including minors aged 10 or above, and guardians on behalf of minors or persons of unsound mind. Multiple accounts can be opened with a minimum deposit of ₹1,000, in multiples of ₹100, and no maximum limit. Tenure options include 1, 2, 3, and 5 years, with interest calculated quarterly and payable annually. The 5-year TD qualifies for tax benefits under Section 80C of the Income Tax Act, 1961. Premature closure is permitted after six months, subject to specific interest penalties. Accounts can be extended for the original tenure within specified periods after maturity, with the applicable interest rate being that on the day of maturity. Additionally, TD accounts can be pledged as security to specified authorities by submitting the required application and acceptance letter at the concerned Post Office. The NSC is a low-risk, fixed-income investment with tax-saving benefits.",
+    "Interest Rate": "7.7% compounded annually (paid at maturity)",
+    "Tenure": "5 years",
+    "Minimum Deposit": "₹1,000",
+    "Features": "Qualifies for Section 80C tax deductions. Safe and government-backed investment."
+  },
+
+  "Kisan Vikas Patra (KVP)1": {
+    "Description": "The Kisan Vikas Patra (KVP) is a savings certificate scheme available to single adults, joint accounts (up to three adults), guardians on behalf of minors or individuals of unsound mind, and minors aged 10 or above in their own name. Investments start at a minimum of ₹1,000, with no upper limit, and multiple accounts can be opened. The maturity period is determined by the Ministry of Finance at the time of deposit. KVPs can be pledged as security to specified authorities, including the President of India, state governors, RBI, scheduled banks, cooperative societies, corporations, and housing finance companies. Premature closure is permitted under specific conditions: the account holder's death, forfeiture by a gazetted officer, court orders, or after 2 years and 6 months from the deposit date. Transfer of accounts is allowed upon the account holder's death to nominees or legal heirs, to joint holders, by court order, or when pledging the account to specified authorities. The KVP doubles your investment over a fixed tenure.",
+    "Interest Rate": "7.5% compounded annually",
+    "Maturity Period": "115 months (9 years, 7 months)",
+    "Minimum Deposit": "₹1,000",
+    "Features": "No maximum deposit limit. Premature closure allowed after 2.5 years."
+  },
+
+  "Public Provident Fund (PPF)1": {
+    "Description": "The Public Provident Fund (PPF) is a long-term savings scheme available to single adult Indian residents and guardians on behalf of minors or individuals of unsound mind. Each individual is permitted only one account nationwide, either in a Post Office or a bank. The scheme requires a minimum annual deposit of ₹500 and allows a maximum of ₹1.5 lakh per financial year, inclusive of deposits in one's own account and those opened on behalf of minors. Deposits can be made in multiples of ₹50, with no limit on the number of installments. Contributions qualify for tax deductions under Section 80C of the Income Tax Act. The account matures after 15 years, with options for extension in 5-year blocks. Premature closure is permitted under specific conditions, such as life-threatening illnesses, higher education needs, or a change in residency status, subject to a 1% interest penalty. In the event of the account holder's death, the account is closed, and the nominee or legal heir receives the balance; further deposits are not allowed.",
+    "Interest Rate": "7.1% compounded annually",
+    "Tenure": "15 years (extendable in 5-year blocks)",
+    "Minimum Deposit": "₹500 annually",
+    "Maximum Deposit": "₹1.5 lakh annually",
+    "Features": "Tax benefits under Section 80C. Partial withdrawals allowed after 7 years."
+  },
+
+  "Sukanya Samriddhi Yojana (SSY)1": {
+    "Description": "The Sukanya Samriddhi Account is a government-backed savings scheme aimed at securing the financial future of a girl child. Guardians can open an account in the name of a girl child below 10 years of age, with a maximum of two accounts per family—exceptions are made in the case of twins or triplets. A minimum deposit of ₹250 is required, with a maximum annual contribution of ₹1.5 lakh, eligible for tax deductions under Section 80C of the Income Tax Act. Deposits can be made for up to 15 years from the account's opening, and the account matures after 21 years or upon the girl's marriage after 18. Partial withdrawals, up to 50% of the account balance, are permitted after the account holder turns 18, primarily for educational expenses. Premature closure is allowed under specific conditions, such as the account holder's death or life-threatening illnesses. The account offers attractive interest rates, compounded annually, with earnings being tax-free.",
+    "Interest Rate": "8.2% compounded annually",
+    "Tenure": "21 years or until marriage after 18 years",
+    "Minimum Deposit": "₹250 annually",
+    "Maximum Deposit": "₹1.5 lakh annually",
+    "Features": "Tax-free returns and Section 80C benefits. Partial withdrawals for higher education after 18 years."
+  },
+
+  "Senior Citizen Savings Scheme (SCSS)1": {
+    "Description": "The Senior Citizen Savings Scheme (SCSS) is a government-backed savings initiative for individuals aged 60 or above. Retired civilian employees aged 55–60 and retired defense personnel aged 50–60 can also invest within one month of receiving retirement benefits. Accounts can be opened individually or jointly with a spouse, with a minimum deposit of ₹1,000 and a maximum of ₹30 lakh across all SCSS accounts held by an individual. Investments qualify for tax deductions under Section 80C of the Income Tax Act, 1961. Interest is payable quarterly and is taxable if it exceeds ₹50,000 in a financial year, with TDS deducted accordingly. Premature closure is allowed, subject to specific conditions and penalties. Accounts mature after five years, with an option to extend for an additional three years.",
+    "Interest Rate": "8.2% per annum (quarterly payout)",
+    "Tenure": "5 years (extendable by 3 years)",
+    "Maximum Deposit": "₹30 lakh",
+    "Eligibility": "Individuals aged 60+",
+    "Features": "Tax-free returns. TDS applicable if interest exceeds ₹50,000 per annum."
+  },
+
+  "Monthly Income Scheme (MIS)1": {
+    "Description": "The Post Office Monthly Income Scheme (MIS) is a savings plan designed to provide regular monthly interest income. It is accessible to single adults, joint accounts (up to three adults), guardians on behalf of minors or individuals of unsound mind, and minors aged 10 years or older in their own name. The account requires a minimum deposit of ₹1,000, with maximum investment limits of ₹9 lakh for single accounts and ₹15 lakh for joint accounts, ensuring that an individual's total investment across all MIS accounts does not exceed ₹9 lakh. Interest is disbursed monthly and can be credited directly to a linked savings account. Premature closure is permitted after one year, subject to specific penalties: a 2% deduction from the principal if closed between one and three years, and a 1% deduction if closed after three years but before the five-year maturity period. In the event of the account holder's death, the account can be closed, and the nominee or legal heirs will receive the amount, with interest paid up to the month preceding the refund.",
+    "Interest Rate": "7.4% per annum",
+    "Tenure": "5 years",
+    "Maximum Deposit": "₹9 lakh (single) and ₹15 lakh (joint)",
+    "Features": "Premature closure allowed after 1 year with penalties."
+  },
+  "Whole Life Assurance (Suraksha)": {
+    "Description": "The Whole Life Assurance (Suraksha) plan provides life coverage up to the age of 80. In the event of the policyholder's demise before this age, the sum assured along with accrued bonuses is paid to the nominee. Policyholders have the option to convert this plan into an Endowment Assurance policy after one year, provided they are below 57 years of age. Additionally, a loan facility is available after four years of policy completion.",
+    "Coverage": "Lifetime up to age 80",
+    "Minimum Sum Assured": "₹20,000",
+    "Benefits": "Bonus of ₹76 per ₹1,000 sum assured annually"
+  },
+  "Convertible Whole Life Assurance (Suvidha)": {
+    "Description": "The Convertible Whole Life Assurance (Suvidha) plan offers the flexibility to convert into an Endowment Assurance policy after five years. This feature allows policyholders to adapt their insurance coverage to changing financial goals over time. The plan also provides a loan facility after four years of policy completion.",
+    "Coverage": "Convertible to Endowment Assurance after 5 years",
+    "Minimum Sum Assured": "₹20,000",
+    "Loan Facility": "After 4 years"
+  },
+  "Endowment Assurance (Santosh)": {
+    "Description": "The Endowment Assurance (Santosh) plan combines savings with insurance coverage, paying the sum assured along with accrued bonuses either on maturity or to the nominee in case of the policyholder's demise during the term. This plan is suitable for individuals aiming to build a corpus for future financial needs while ensuring life coverage.",
+    "Coverage": "Fixed maturity or death benefit",
+    "Minimum Sum Assured": "₹20,000",
+    "Bonus": "₹52 per ₹1,000 sum assured annually"
+  },
+  "Joint Life Assurance (Yugal Suraksha)": {
+    "Description": "The Joint Life Assurance (Yugal Suraksha) plan is designed for married couples, providing life cover to both spouses under a single policy. In the event of the death of either spouse, the sum assured along with accrued bonuses is paid to the surviving partner, ensuring financial security for the family.",
+    "Coverage": "Whole life policy providing financial security to rural individuals",
+    "Minimum Sum Assured": "₹10,000",
+    "Bonus": "High annual returns"
+  },
+  "Anticipated Endowment Assurance (Sumangal)": {
+    "Description": "The Anticipated Endowment Assurance (Sumangal) plan is a money-back policy ideal for individuals needing periodic returns. It provides survival benefits at specific intervals during the policy term, with the remaining sum assured and bonuses paid at maturity. In case of the policyholder's demise during the term, the full sum assured along with bonuses is paid to the nominee, irrespective of the survival benefits already paid.",
+    "Features": "Periodic survival benefits and full sum assured at maturity."
+  },
+  "Gram Suraksha": {
+    "Description": "The Gram Suraksha plan offers whole life assurance to individuals in rural areas, providing financial protection to the family in the event of the policyholder's demise. It ensures a lump-sum payment to the nominee, aiding in financial stability during unforeseen circumstances."
+  },
+  "Gram Suvidha": {
+    "Description": "The Gram Suvidha plan is a convertible whole life assurance policy that can be converted into an endowment assurance plan after five years. This flexibility allows policyholders to modify their insurance plans as per their evolving financial requirements."
+  },
+  "Gram Santosh": {
+    "Description": "The Gram Santosh plan is an endowment assurance policy that provides a lump-sum amount along with bonuses either on maturity or to the nominee upon the policyholder's demise during the policy term. This plan is suitable for individuals aiming to save systematically while ensuring life coverage."
+  },
+  "Gram Sumangal": {
+    "Description": "The Gram Sumangal plan is an anticipated endowment assurance policy offering periodic survival benefits during the policy term, making it ideal for individuals seeking regular returns. In case of the policyholder's demise during the term, the full sum assured along with bonuses is paid to the nominee, regardless of the survival benefits already disbursed."
+  },
+  "Gram Priya": {
+    "Description": "The Gram Priya plan is a 10-year rural postal life insurance policy designed to provide life coverage for a shorter duration, catering to individuals seeking temporary insurance protection."
+  },
+  "welcome": "Welcome to",
+  "platformName": "Yojna Sahayak",
+  "portalMessage": "National Portal for Post Office Banking and Insurance Schemes Regulation",
+  "slogan": "\"Right Scheme, Right Place, Right People - Empowering India, One Insight at a Time!\""
 }

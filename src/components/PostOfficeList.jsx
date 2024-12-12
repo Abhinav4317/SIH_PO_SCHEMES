@@ -8,11 +8,14 @@ const PostOfficeList = ({
   postalID = "243122",
   password,
   email,
+  empID,
   closePostOfficeList,
 }) => {
   const { loginUser, btnLoading } = UserData();
   const [POList, setPOList] = useState([]);
   const [openIndex, setOpenIndex] = useState(null); // Track which dropdown is open
+  const [selectedPostOffice, setSelectedPostOffice] = useState(null); // New state to store selected post office
+
   useEffect(() => {
     const url = "https://api.postalpincode.in/pincode/" + postalID;
     axios.get(url).then((response) => {
@@ -27,20 +30,29 @@ const PostOfficeList = ({
         setPOList(PostOfficeList);
       }
     });
-  }, []);
+  }, [postalID]);
 
   const toggleDropdown = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index)); // Toggle open/close
   };
 
+  const handlePostOfficeSelect = (postOfficeName) => {
+    setSelectedPostOffice(postOfficeName); // Save the selected post office name
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!postalID || !password || !email) {
+    if (!selectedPostOffice) {
+      toast.error("Please select a post office name.");
+      return;
+    }
+
+    if (!postalID || !password || !email || !empID) {
       toast.error("Please enter all necessary fields.");
       return;
     }
 
-    loginUser(email, postalID, password);
+    loginUser(email, postalID, password, selectedPostOffice,empID); // Pass selected post office name
   };
 
   return (
@@ -76,8 +88,13 @@ const PostOfficeList = ({
               POList.map((postOffice, index) => (
                 <div
                   key={index}
-                  className="bg-white text-black w-full my-2 px-3 py-2 rounded-md shadow-md shadow-black cursor-pointer transition-all"
-                  onClick={() => toggleDropdown(index)}
+                  className={`text-black w-full my-2 px-3 py-2 rounded-md shadow-md shadow-black cursor-pointer transition-all ${
+                    selectedPostOffice === postOffice.Name?"bg-secondary":"bg-white"
+                  }`}
+                  onClick={() => {
+                    toggleDropdown(index);
+                    handlePostOfficeSelect(postOffice.Name); // Set selected post office name
+                  }}
                 >
                   {/* Basic Details */}
                   <div className="grid grid-cols-[1fr_2fr_2fr_2fr]">

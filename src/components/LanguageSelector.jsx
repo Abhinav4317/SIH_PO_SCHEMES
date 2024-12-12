@@ -20,9 +20,6 @@ const LanguageSelector = () => {
           value={lang}
           onChange={changeLanguage}
           className="bg-tertiary rounded-lg active:border-primary "
-          style={{
-            boxShadow: "4px 4px 8px rgba(72, 46, 29,0.6)",
-          }}
         >
           {languages.map((language) => (
             <option key={language.code} value={language.code}>

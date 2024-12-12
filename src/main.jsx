@@ -5,6 +5,7 @@ import "./i18n.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.css";
+import { AdminProvider } from "./context/AdminContext.jsx";
 
 export const auth_server = "http://localhost:3000";
 export const feedback_server = "http://localhost:3001";
@@ -17,7 +18,9 @@ if (!window._root) {
 }
 
 window._root.render(
-  <UserProvider>
-    <App />
-  </UserProvider>
+  <AdminProvider>
+    <UserProvider>
+      <App />
+    </UserProvider>
+  </AdminProvider>
 );

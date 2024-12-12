@@ -25,6 +25,11 @@ export default {
         secondary: "#FFF4D5",
         tertiary: "#E6DCC0",
       },
+      fontFamily: {
+        english: ["Roboto", "sans-serif"], // Replace with your English font
+        hindi: ['"Noto Sans Devanagari"', "sans-serif"],
+        tamil: ['"Noto Sans Tamil"', "sans-serif"],
+      },
     },
   },
   plugins: [addVariablesForColors, flowbitePlugin],

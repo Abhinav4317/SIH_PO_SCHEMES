@@ -22,6 +22,7 @@ import {
 import "tailwindcss/tailwind.css";
 import HeatMap from "react-heatmap-grid";
 import { useTranslation } from "react-i18next";
+import { UserData } from "../context/UserContext";
 
 // Registering necessary chart.js components
 ChartJS.register(
@@ -39,6 +40,7 @@ ChartJS.register(
 const DemographicDisplay = () => {
   const [openModal, setOpenModal] = useState(null);
   const { t } = useTranslation();
+  const { getFontClass } = UserData();
   const ageGroups = getAgeGroups();
   const populationByGender = getPopulationByGender();
   const populationByIncome = getPopulationByIncome();
@@ -80,7 +82,7 @@ const DemographicDisplay = () => {
       {
         label: "Occupation Distribution",
         data: occupationDistribution.map((item) => item.population),
-        backgroundColor: "#FF9800",
+        backgroundColor: ["#FF9800", "#2196F3", "#4CAF50"],
       },
     ],
   };
@@ -152,9 +154,11 @@ const DemographicDisplay = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center gap-3 mt-4">
+    <div
+      className={`w-full flex flex-col items-center gap-3 mt-4 ${getFontClass()}`}
+    >
       <div className="w-[90%] bg-secondary border-8 border-primary text-center p-8 text-2xl font-serif rounded-lg cursor-pointer">
-        #{t("Demo")}
+        #Visualization
         <br />
         <span className="text-lg text-gray-700">{t("DemoSub")}</span>
       </div>
@@ -220,7 +224,7 @@ const DemographicDisplay = () => {
                 fill="#ffeb3b"
               />
             </svg>
-            {t("occupation_distribution")}
+            Month-wise Accounts Opened-Pre-Model vs Post-Model
           </h3>
         </div>
         <div
@@ -295,7 +299,7 @@ const DemographicDisplay = () => {
               <rect x="23" y="41" width="18" height="18" fill="#ff6b6b" />
               <rect x="41" y="41" width="18" height="18" fill="#ffd93b" />
             </svg>
-            {t("heatmap_population_age_income_occupation")}
+            Scheme-Specific Conversion Rates-Pre-Model vs Post-Model
           </h3>
         </div>
       </div>
@@ -307,21 +311,21 @@ const DemographicDisplay = () => {
           onClick={closeModal}
         >
           <div
-            className="bg-secondary border-2 border-primary p-6 rounded-lg shadow-lg max-w-lg w-full"
+            className="bg-secondary border-2 border-primary p-6 rounded-lg shadow-lg flex flex-col gap-2 items-center justify-center w-[70vw] h-[70vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-2xl font-semibold">
+              <h3 className="text-xl font-semibold">
                 {openModal === "genderPopulation" && t("population_age_gender")}
                 {openModal === "incomeDistribution" &&
                   t("income_level_distribution")}
                 {openModal === "occupationDistribution" &&
-                  t("occupation_distribution")}
+                  "Month-wise Accounts Opened-Pre-Model vs Post-Model"}
                 {openModal === "populationTrend" && t("population_trend_age")}
                 {openModal === "occupationByGender" &&
                   t("population_occupation_gender_split")}
                 {openModal === "heatmap" &&
-                  t("heatmap_population_age_income_occupation")}
+                  "Scheme-Specific Conversion Rates-Pre-Model vs Post-Model"}
               </h3>
               <button
                 className="text-xl font-semibold text-gray-700"
@@ -339,7 +343,9 @@ const DemographicDisplay = () => {
               <Pie data={incomeData} options={{ responsive: true }} />
             )}
             {openModal === "occupationDistribution" && (
-              <Bar data={occupationData} options={{ responsive: true }} />
+              <div className="w-full h-full">
+                <img src="/month_wise.jpg" alt="" className="w-full h-[80%]" />
+              </div>
             )}
             {openModal === "populationTrend" && (
               <Line data={populationTrendData} options={{ responsive: true }} />
@@ -351,18 +357,13 @@ const DemographicDisplay = () => {
               />
             )}
             {openModal === "heatmap" && (
-              <HeatMap
-                xLabels={ageGroups}
-                yLabels={["Low", "Med", "High"]}
-                data={heatmapValues}
-                height={30}
-                width={60}
-                cellStyle={(background, value) => ({
-                  background: `rgba(0, 255, 0, ${value / 3000})`,
-                  border: "1px solid rgba(0, 0, 0, 0.1)",
-                })}
-                cellRender={(value) => (value ? `${value}` : "0")}
-              />
+              <div className="w-full h-full">
+                <img
+                  src="/conversion_rate.jpg"
+                  alt=""
+                  className="w-full h-[80%]"
+                />
+              </div>
             )}
           </div>
         </div>
