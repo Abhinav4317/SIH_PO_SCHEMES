@@ -34,6 +34,8 @@ const shortScheme = {
   "Post Office Savings Account": "POSA",
   "5-Year Post Office Recurring Deposit Account (RD)": "RD",
   "Post Office Monthly Income Account Scheme (MIS)": "MIS",
+  "National Savings Certificates (NSC)":"NSC",
+  "Post Office Time Deposit Account (TD)":"TD",
 };
 
 const FeedbackDisplay = () => {
@@ -50,6 +52,7 @@ const FeedbackDisplay = () => {
       .then(({ data }) => {
         let temp = [];
         let temp2 = [];
+        console.log(data)
         data.map((feedback) => {
           let schemes = feedback?.schemes;
           let weight = feedback?.weight;
@@ -59,6 +62,7 @@ const FeedbackDisplay = () => {
             schemes.map((scheme) => {
               let curScore = 1 * weight;
               let found = false;
+              if(shortScheme[scheme]===undefined) console.log(scheme)
               for (let obj of temp) {
                 if (
                   Object.prototype.hasOwnProperty.call(obj, shortScheme[scheme])
@@ -74,6 +78,7 @@ const FeedbackDisplay = () => {
             });
           }
         });
+        console.log(temp);
         setSchemeToScore(temp);
         setSuggestions(temp2);
       })

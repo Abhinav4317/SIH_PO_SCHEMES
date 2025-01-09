@@ -29,6 +29,7 @@ export const AdminProvider = ({ children }) => {
       setBtnLoading(false);
     } catch (error) {
       console.log(error);
+      //console.log("yahan hua error")
       toast.error(error?.response?.data?.message);
       setBtnLoading(false);
     }
@@ -55,6 +56,7 @@ export const AdminProvider = ({ children }) => {
       setIsAuth(true);
       setAdmin(data.admin);
     } catch (error) {
+      //console.log("yahan bhi")
       toast.error(error.response.data.message);
       setBtnLoading(false);
     }

@@ -127,6 +127,8 @@ const RoleBasedPlaces = ({ role }) => {
         place: selectedPlace,
         targets,
       });
+      toast.success("Targets set successfully!")
+      setTargets([]);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -211,18 +213,18 @@ const RoleBasedPlaces = ({ role }) => {
           ))}
         </select>
       </div>
-      <h2 className="mx-auto w-[30%] rounded-xl text-xl font-bold mb-4 text-center font-serif mt-4 p-4 bg-secondary border-4 border-primary">
+      <h2 className="mx-auto w-[30%] rounded-xl text-xl font-bold mb-4 text-center font-serif mt-4 p-4 bg-primary border-4 border-secondary">
         SET YOUR OWN TARGETS:
       </h2>
       {/* Display Targets Input for Schemes */}
-      <div className="bg-white p-6 rounded-lg shadow-md">
+      <div className="bg-secondary border-2 border-primary p-6 rounded-lg shadow-md">
         <h3 className="text-lg font-bold mb-4">Set Targets for Schemes:</h3>
         {targets.map((scheme, index) => (
           <div key={index} className="flex items-center mb-2">
             <label className="w-1/2">{scheme.name}:</label>
             <input
               type="text"
-              value={scheme.target} // Use string value
+              value={scheme.target||0} // Use string value
               onChange={(e) => handleTargetChange(index, e.target.value)}
               className="w-1/2 p-2 border rounded-md"
             />
@@ -231,7 +233,7 @@ const RoleBasedPlaces = ({ role }) => {
       </div>
       <button
         onClick={handleSubmit}
-        className="bg-black w-full py-2 px-4 text-center text-white rounded-xl"
+        className="bg-black w-full py-2 px-4 text-center text-white rounded-xl mt-2"
       >
         Submit
       </button>

@@ -126,7 +126,7 @@ const Schemes = () => {
   const { t } = useTranslation();
   const { getFontClass } = UserData();
   const [show, setShow] = useState("banking");
-  const { isAuth } = AdminData();
+  const { isAuth } = UserData();
   return (
     <div
       className={`w-full min-h-screen ${getFontClass()} flex flex-col gap-2 items-center justify-center`}
@@ -159,13 +159,13 @@ const Schemes = () => {
       </div>
       <div className="w-full h-screen flex flex-col items-center justify-center">
         <div className="w-[98%] h-screen flex gap-2 p-4">
-          <div className="w-1/4 h-[70%] flex flex-col gap-2 flex-wrap overflow-y-auto">
+          <div className="w-1/2 md:w-1/4 h-[70%] flex flex-col gap-2 flex-wrap pr-2 overflow-y-auto">
             <ul className="list-decimal pl-6">
               {show === "banking" &&
                 postOfficeSchemes.map(({ index, name }) => (
                   <li
                     key={index}
-                    className="w-full mb-4 hover:bg-primary px-4 py-2 rounded-lg"
+                    className="w-full mb-4 border-2 border-black hover:bg-primary px-4 py-2 rounded-xl"
                   >
                     <a href={`#${index - 1}`}>{name}</a>
                   </li>
@@ -178,7 +178,7 @@ const Schemes = () => {
                       pli.map((is, index) => (
                         <li
                           key={index}
-                          className="w-full mb-4 hover:bg-primary px-4 py-2 rounded-lg"
+                          className="w-full mb-4 border-2 border-black hover:bg-primary px-4 py-2 rounded-xl"
                         >
                           <a href={`#${index}`}>{is[0].split(".")[0]}</a>
                         </li>
@@ -190,7 +190,7 @@ const Schemes = () => {
                       rpli.map((ris, index) => (
                         <li
                           key={index}
-                          className="w-full mb-4 hover:bg-primary px-4 py-2 rounded-lg"
+                          className="w-full mb-4 border-2 border-black hover:bg-primary px-4 py-2 rounded-xl"
                         >
                           <a href={`#${index + 6}`}>{ris[0].split(".")[0]}</a>
                         </li>
@@ -200,16 +200,18 @@ const Schemes = () => {
               )}
             </ul>
           </div>
-          <div className="w-3/4 h-full flex flex-col gap-2">
+          <div className="w-1/2 md:w-3/4 h-full flex flex-col gap-2">
             {show === "banking" &&
               schemeArray.length &&
               schemeArray.map((scheme, index) => (
                 <div
                   key={index}
-                  className="w-[90%] bg-secondary p-10 rounded-lg mb-2"
+                  className="w-[95%] bg-secondary p-8 rounded-lg mb-2"
                   id={index + 1}
                 >
-                  <h1 className="text-4xl mb-4">{scheme[0].split("1")[0]}</h1>
+                  <h1 className="text-2xl md:text-4xl mb-4">
+                    {scheme[0].split("1")[0]}
+                  </h1>
                   {scheme.length &&
                     scheme.map((desc, idx) => (
                       <div key={idx}>
@@ -226,10 +228,12 @@ const Schemes = () => {
               pli.map((is, index) => (
                 <div
                   key={index}
-                  className="w-[90%] bg-secondary p-10 rounded-lg mb-2"
+                  className="w-[95%] bg-secondary p-8 rounded-lg mb-2"
                   id={index + 1}
                 >
-                  <h1 className="text-4xl mb-4">{is[0].split(".")[0]}</h1>
+                  <h1 className="text-3xl md:text-4xl mb-4">
+                    {is[0].split(".")[0]}
+                  </h1>
                   {is.length &&
                     is.map((desc, idx) => (
                       <div key={idx}>

@@ -148,8 +148,8 @@ const PredictedDisplay = () => {
 
       {/* Popup Modal for Selected Graph */}
       {selectedGraph && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4">
-          <div className="bg-white border-4 border-gray-300 rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-10 mt-16">
+          <div className="bg-white border-4 border-gray-300 rounded-lg shadow-lg w-full max-w-4xl max-h-[80vh] overflow-y-auto">
             <div className="p-6">
               <h2 className="text-xl font-bold mb-4 text-center">
                 {selectedGraph.name}

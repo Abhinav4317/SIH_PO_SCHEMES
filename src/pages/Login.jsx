@@ -52,7 +52,8 @@ const Login = () => {
         await loginAdmin(email, empID, password); // Perform admin login
         setAdminShowOTPWindow(true); // Show OTP window after admin login
       } catch (error) {
-        toast.error("Admin login failed!");
+        console.log(error)
+        //toast.error("Admin login failed!");
       }
     }
   };

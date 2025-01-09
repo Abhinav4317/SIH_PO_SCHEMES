@@ -20,9 +20,21 @@ const Home = () => {
   const { t } = useTranslation();
   const [show, setShow] = useState(false);
   const [schemes, setSchemes] = useState([]);
+  const [insurances, setInsurances] = useState([]);
+  const [schemeScore, setSchemeScore] = useState(null);
+  const [insuranceScore, setInsuranceScore] = useState(null);
   const { role, isAuth: isAdminAuth } = AdminData();
   const [locations, setLocations] = useState([]);
   const [showSchemeModal, setShowSchemeModal] = useState(false);
+
+  const plans = {
+    "5-Year Post Office Recurring Deposit (RD)":
+      "To promote the 5-Year Post Office Recurring Deposit, focus on middle-income families, salaried individuals, and small business owners. Tailor messaging around the discipline of monthly savings and guaranteed returns, emphasizing its suitability for achieving medium-term goals like children's education or emergency funds. Use digital platforms to engage tech-savvy youth and traditional media like radio and newspapers for rural audiences. Partner with local influencers, host financial literacy drives, and leverage post office networks for community-level promotions. Highlight trust in government-backed schemes, risk-free investment, and tax benefits, addressing concerns about flexibility by showcasing options for premature withdrawal.",
+    "Post Office Time Deposit Account (TD)":
+      "For the Post Office Time Deposit Account, target retired individuals, homemakers, and small investors seeking safe, fixed returns. Communicate benefits like flexible deposit terms and competitive interest rates, positioning it as an alternative to fixed deposits. Use SMS campaigns, postal brochures, and radio ads in regional languages to reach rural and senior populations. Conduct awareness events at post offices, emphasizing the simplicity of opening and managing accounts. Address barriers like perceived complexity by demonstrating ease of access and maturity benefits, assuring government-backed security and reliability.",
+    "Convertible Whole Life Assurance (Gram Suvidha)":
+      "For Gram Suvidha, focus on rural households, self-employed individuals, and young professionals. Highlight lifetime coverage with a savings component and the flexibility of converting to an endowment plan. Utilize local fairs, mobile vans, and community meetings to engage rural audiences. Build trust by featuring testimonials from existing policyholders and leveraging post office agents for door-to-door communication. Offer simplified explanations of premiums and payouts, addressing doubts about affordability with affordable installment plans. Emphasize the dual benefit of protection and savings, ensuring cultural and linguistic sensitivity in messaging.",
+  };
 
   useEffect(() => {
     if (isAdminAuth === false) return;
@@ -39,15 +51,20 @@ const Home = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8001/promotion_plans",
+        "http://localhost:8001/predict_schemes",
         {
-          post_office_name: "C.T.T.Nagar H.O",
+          post_office_name: user?.postOfficeName,
           top_n_schemes: 3,
           include_neighbor_vote: false,
         }
       );
-      console.log(predict);
-      setSchemes(response?.data?.promotion_plans);
+      console.log(response);
+      setSchemes(response?.data?.recommended_schemes);
+      setInsurances(response?.data?.recommeded_insurances);
+      setSchemeScore(response?.data?.scheme_confidence);
+      setInsuranceScore(response?.data?.insurance_confidence);
+      console.log(response?.data?.scheme_confidence);
+      console.log(response?.data?.insurance_confidence);
       setShowSchemeModal(true);
       console.log(response);
     } catch (error) {
@@ -90,10 +107,24 @@ const Home = () => {
               {schemes.map((scheme, index) => (
                 <div key={index} className="bg-secondary p-4 rounded-lg">
                   <h2 className="text-lg font-semibold mb-2">
-                    {scheme?.scheme_name || ""}
+                    {scheme || ""}:{schemeScore[scheme] * 100}
+                    {"%"}
                   </h2>
+                  <h3 className="font-bold text-sm">Promotion Plan:</h3>
                   <p className="text-sm">
-                    {scheme?.plan || "No additional details available"}
+                    {plans[scheme] || "No additional details available"}
+                  </p>
+                </div>
+              ))}
+              {insurances.map((insurance, index) => (
+                <div key={index} className="bg-secondary p-4 rounded-lg">
+                  <h2 className="text-lg font-semibold mb-2">
+                    {insurance || ""}:{insuranceScore[insurance] * 100}
+                    {"%"}
+                  </h2>
+                  <h3 className="font-bold text-sm">Promotion Plan:</h3>
+                  <p className="text-sm">
+                    {plans[insurance] || "No additional details available"}
                   </p>
                 </div>
               ))}
@@ -118,7 +149,8 @@ const Home = () => {
         ""
       ) : (
         <h1 className="text-center font-serif text-lg mt-32">
-          Currently signed-in from-<span className="font-bold">{place}</span>
+          Currently signed-in from-
+          <span className="font-bold">{user?.postOfficeName}</span>
         </h1>
       )}
       {role === "PMO" && (
@@ -185,6 +217,7 @@ const Home = () => {
       <MarqueeModern />
       {isAuth === true && (
         <div>
+          {/* {JSON.stringify(user)} */}
           <div className="w-full flex flex-col gap-2 items-center justify-center p-4">
             <button
               onClick={predict}

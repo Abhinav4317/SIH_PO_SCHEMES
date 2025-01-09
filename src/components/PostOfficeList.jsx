@@ -14,6 +14,7 @@ const PostOfficeList = ({
   const { loginUser, btnLoading } = UserData();
   const [POList, setPOList] = useState([]);
   const [openIndex, setOpenIndex] = useState(null); // Track which dropdown is open
+  const [selectedPOName,setSelectedPOName]=useState(null);
   const [selectedPostOffice, setSelectedPostOffice] = useState(null); // New state to store selected post office
 
   useEffect(() => {
@@ -35,9 +36,29 @@ const PostOfficeList = ({
   const toggleDropdown = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index)); // Toggle open/close
   };
+  function splitString(input) {
+    // Regular expression to match the text outside and inside parentheses
+    const regex = /^(.*?)\s*(\([^)]*\))?$/;
 
-  const handlePostOfficeSelect = (postOfficeName) => {
-    setSelectedPostOffice(postOfficeName); // Save the selected post office name
+    // Match the input string against the regex
+    const matches = input.match(regex);
+
+    // Extract the parts
+    const part1 = matches[1]?.trim() || ""; // Text outside parentheses
+    const part2 = matches[2]?.trim() || ""; // Text inside parentheses
+
+    return { part1, part2 };
+  }
+
+
+  const handlePostOfficeSelect = (postOfficeName,branchType) => {
+    setSelectedPOName(postOfficeName);
+    let {part1,part2}=splitString(postOfficeName);
+    let str2=branchType.split(" ")[0][0];
+    str2=str2+".O";
+    let str=part1+" "+str2;
+    if(part2) str=str+" "+part2;
+    setSelectedPostOffice(str); // Save the selected post office name
   };
 
   const submitHandler = (e) => {
@@ -89,11 +110,11 @@ const PostOfficeList = ({
                 <div
                   key={index}
                   className={`text-black w-full my-2 px-3 py-2 rounded-md shadow-md shadow-black cursor-pointer transition-all ${
-                    selectedPostOffice === postOffice.Name?"bg-secondary":"bg-white"
+                    selectedPOName === postOffice.Name?"bg-secondary":"bg-white"
                   }`}
                   onClick={() => {
                     toggleDropdown(index);
-                    handlePostOfficeSelect(postOffice.Name); // Set selected post office name
+                    handlePostOfficeSelect(postOffice.Name,postOffice.BranchType); // Set selected post office name
                   }}
                 >
                   {/* Basic Details */}

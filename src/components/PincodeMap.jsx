@@ -75,7 +75,7 @@ const PincodeMap = ({ pincode }) => {
         <div
           id="map"
           className="rounded-2xl mt-2"
-          style={{ height: "60vh", width: "100%", zIndex: 0 }}
+          style={{ height: "40vh", width: "100%", zIndex: 0 }}
         />
       ) : (
         <p>Loading map...</p>

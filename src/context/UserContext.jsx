@@ -162,6 +162,7 @@ export const UserProvider = ({ children }) => {
           logoutHandler,
           showOTPWindow,
           getFontClass,
+          currentLanguage,
           place,
         }}
       >

@@ -20,6 +20,10 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        primary:
+          "radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.4) 0%, transparent 70%)",
+      },
       colors: {
         primary: "#FF9839",
         secondary: "#FFF4D5",
