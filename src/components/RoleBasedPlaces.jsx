@@ -11,7 +11,7 @@ import {
 import toast from "react-hot-toast";
 import axios from "axios";
 import { feedback_server } from "../main";
-import TargetsBarChart from "./TargetBarcHarts";
+import TargetsBarChart from "./TargetBarCharts";
 
 const savingsSchemes = [
   "Savings Account",
