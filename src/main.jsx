@@ -7,8 +7,9 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.css";
 import { AdminProvider } from "./context/AdminContext.jsx";
 
-export const auth_server = "sihpoauth-production.up.railway.app";
-export const feedback_server = "sihpofeedback-production.up.railway.app";
+export const auth_server = "https://sihpoauth-production.up.railway.app";
+export const feedback_server =
+  "https://sihpofeedback-production.up.railway.app";
 
 const container = document.getElementById("root");
 
